@@ -5,7 +5,7 @@ const routes = express.Router();
 const examsRoutes = require('./exams');
 const usersRoutes = require('./users');
 
-routes.use('/users',usersRouter);
-routes.use('/exams', examsRouer);
+routes.use('/users',usersRoutes);
+routes.use('/exams', examsRoutes);
 
 module.exports = routes;

@@ -1,13 +1,7 @@
 const routes = require('express').Router();
 
-const examsRoutes = require('./exams');
-const usersRoutes = require('./users');
-
 routes.get('/', (req, res) => {
-  res.send({ success: 'You\'re at home' });
+  res.send({ success: 'Welcome to our home page!' });
 });
-
-routes.use('/users', usersRoutes);
-routes.use('/exams', examsRoutes);
 
 module.exports = routes;

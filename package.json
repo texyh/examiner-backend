@@ -2,7 +2,7 @@
   "name": "examiner-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha tests/**/*.test.js --exit",
     "start": "node server.js",
@@ -20,9 +20,8 @@
   "homepage": "https://github.com/texyh/examiner-backend#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
-    "mongo": "^0.1.0",
     "mongoose": "^5.2.7"
   },
   "devDependencies": {

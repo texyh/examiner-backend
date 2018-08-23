@@ -1,7 +1,9 @@
 const db = require('mongoose');
+const env = require('../config')
 
 db.Promise = global.Promise;
-db.connect(process.env.MONGODB_URI);
+
+db.connect(env.MONGODB_URI);
 
 module.exports = {
     db

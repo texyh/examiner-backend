@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 
 const Option = require('./option');
 
+const option = new mongoose.Schema({
+    text: {
+        type : String,
+        required: true
+    },
+    correct : {
+        type : Boolean,
+        required: true,
+        default : false
+    }
+})
+
 const QuestionSchema = new mongoose.Schema({
     _courseId : {
         type: mongoose.SchemaTypes.ObjectId,
@@ -11,14 +23,7 @@ const QuestionSchema = new mongoose.Schema({
         type: String,
         required : true
     },
-    options : [{
-        type : mongoose.SchemaTypes.ObjectId,
-        ref : 'Option'
-    }],
-    answer : {
-        type : mongoose.SchemaTypes.ObjectId,
-        ref : 'Option'
-    }
+    options : [option]
 })
 
 const Question = mongoose.model('Question', QuestionSchema);

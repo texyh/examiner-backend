@@ -1,7 +1,7 @@
 const routes = require('express').Router();
 
-routes.get('/', (req, res) => {
-  res.send({ success: 'Welcome to our home page!' });
-});
+const coursesRouter = require('./courses');
+
+routes.use('/courses', coursesRouter)
 
 module.exports = routes;

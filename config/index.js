@@ -7,4 +7,7 @@ module.exports = {
   test: {
     MONGODB_URI: process.env.MONGODB_URI_TEST,
   },
+  production : {
+    MONGODB_URI: process.env.MONGODB_URI
+  }
 }[env];

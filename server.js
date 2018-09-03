@@ -1,4 +1,5 @@
 require('dotenv').config({ silent: true });
+require('./db/dbconnect');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -15,6 +16,7 @@ app.use((req, res) => {
     error: 'There is nothing on this route.'
   });
 });
+
 
 app.listen(PORT, (err) => {
   if (err) {

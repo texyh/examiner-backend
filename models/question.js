@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const Option = require('./option');
-
 const option = new mongoose.Schema({
     text: {
         type : String,
@@ -15,7 +13,7 @@ const option = new mongoose.Schema({
 })
 
 const QuestionSchema = new mongoose.Schema({
-    _courseId : {
+    courseId : {
         type: mongoose.SchemaTypes.ObjectId,
         required: true
     },
@@ -28,4 +26,4 @@ const QuestionSchema = new mongoose.Schema({
 
 const Question = mongoose.model('Question', QuestionSchema);
 
-module.exports = Question;
+module.exports = {Question, QuestionSchema};

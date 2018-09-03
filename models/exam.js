@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
-const Question = require('./question');
+const {QuestionSchema} = require('./question')
 
-const ExamSchema = new mongoose.Schema({
-    _examinerId : {
-        type : mongoose.Schema.Types.ObjectId
-    },
-    date : {
-        type : Date
-    },
-    questions: [{
-        type : mongoose.SchemaTypes.ObjectId,
-        ref : 'Question'
-    }]
+const ExamCourseSchema = new mongoose.Schema({
+    questions : QuestionSchema,
+    score : {
+        default : 0
+    }
 })
+
+const Exam = new mongoose.Schema({
+    candidateId : {
+        type : mongoose.SchemaTypes.ObjectId
+    },
+
+    settingsId : {
+        type : mongoose.SchemaTypes.ObjectId
+    },
+    
+    Courses : [ExamCourseSchema]
+})
+
 
 const Exam = mongoose.model('Exam', ExamSchema);
 

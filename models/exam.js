@@ -9,7 +9,7 @@ const ExamCourseSchema = new mongoose.Schema({
     }
 })
 
-const Exam = new mongoose.Schema({
+const ExamSchema = new mongoose.Schema({
     candidateId : {
         type : mongoose.SchemaTypes.ObjectId
     },

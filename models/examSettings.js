@@ -15,8 +15,8 @@ const ExamSettings = mongoose.model('ExamSettings', {
         type : mongoose.SchemaTypes.Date
     },
 
-    Courses : {
-        type : [mongoose.SchemaTypes.ObjectId],
+    courses : {
+        type : [{id : mongoose.SchemaTypes.ObjectId, name : String}],
         required : true
     },
 
@@ -31,3 +31,5 @@ const ExamSettings = mongoose.model('ExamSettings', {
     }
 
 })
+
+module.exports = ExamSettings;

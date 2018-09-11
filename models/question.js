@@ -17,6 +17,10 @@ const QuestionSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         required: true
     },
+    examinerId : {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true
+    },
     question: {
         type: String,
         required : true

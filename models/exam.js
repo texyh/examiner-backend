@@ -15,7 +15,8 @@ const ExamSchema = new mongoose.Schema({
     },
 
     settingsId : {
-        type : mongoose.SchemaTypes.ObjectId
+        type : mongoose.SchemaTypes.ObjectId,
+        required : true
     },
     
     Courses : [ExamCourseSchema]

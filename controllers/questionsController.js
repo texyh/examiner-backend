@@ -1,32 +1,16 @@
-const {Question} = require('../models')
+const questionsRepository = require('../repositories/questionsRepository');
 const {examinerId} = require('../utils/constants');
 
 const create = (questions) => {
-    console.log(questions);
-    questions = questions.map(x => new Question({
-                                    courseId : x.courseId,
-                                    question : x.question,
-                                    options : x.options, 
-                                    examinerId: examinerId // Todo Change
-                                })
-                            )
-
-    return Question.insertMany(questions).then(x => {
-        return Promise.resolve(x.map(y => y._id.toString()));
-    }).catch(error => Promise.reject());
+    return questionsRepository.createMany(questions,examinerId);
 }
 
 const getOne = (id) => {
-    Question.findById(id).then(x => {
-        Promise.resolve(x);
-    }).catch(err => Promise.reject());
+    return questionsRepository.findById(id);
 }
 
 const getAll = () => {
-    Question.find({}).then(x => {
-        Promise.resolve(x);
-    }).catch(err => Promise.reject(err));
+    return questionsRepository.findAll();
 }
-
 
 module.exports = {create}

@@ -1,23 +1,15 @@
-const {Course} = require('../models');
+const courseRepository = require('../repositories/coursesRepository');
 
 const getAll = () => {
-    return Course.find({}).then(data => {
-        return Promise.resolve(data);
-    }).catch(error => Promise.reject(error));
+    return courseRepository.findAll();
 }
 
 const create = (courses) => {
-    courses = courses.map(x => new Course({name : x.name}))
-    return Course.insertMany(courses).then(data => {
-        const courseIds = data.map(x => x._id.toString());
-        return Promise.resolve(courseIds);
-    }).catch(error  => Promise.reject(error));
+    return courseRepository.CreateMany(courses);
 }
 
 const getOne = (id) => {
-    return Course.findById(id).then(course => {
-        return Promise.resolve(course)
-    }).catch(error => Promises.reject(error));
+    return courseRepository.findById(id);
 }
 
 module.exports = {getAll, create, getOne};

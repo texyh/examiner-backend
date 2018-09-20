@@ -1,39 +1,25 @@
 const _ = require('lodash');
 
-const {ExamSettings, Question} = require('../models');
+const examRepository = require('../repositories/examRepository')
+const questionsRepository = require('../repositories/questionsRepository');
+
 const {examinerId} = require('../utils/constants');
 
 const scheduleExam = (settings) => {
-    const examSettings = new ExamSettings({
-        examinerId : examinerId, // Todo change
-        beginDate : settings.beginDate,
-        endDate : settings.endDate,
-        courses : settings.courses,
-        shuffleQuestions : settings.shuffleQuestions,
-        shuffleOptions : settings.shuffleOptions
-    })
-
-    return examSettings.save().then(result => {
-        return Promise.resolve(result._id.toString());
-    }).catch(err => Promise.reject(err));
+    return examRepository.createSettings(settings,examinerId);
 }
 
 const takeExam = (examId) => {
-    return ExamSettings.findById(examId).then(settings => {
+    return examRepository.findById(examId).then(settings => {
         return generateExam(settings);
     })
 }
 
 const generateExam = (settings) => {
     courseIds = settings.courses.map(x => x.id);
-
-    return Question.find({examinerId : settings.examinerId})
-            .where('courseId')
-            .in(courseIds)
-            .then(questions => {
-               return generationQuestions(questions, settings);
-            })
-    
+    return questionsRepository.findQuestionsInCourseIds().then(questions => {
+       return generationQuestions(questions, settings);
+    })
 }
 
 const generationQuestions = (questions, examSettings) => {

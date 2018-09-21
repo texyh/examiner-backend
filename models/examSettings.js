@@ -28,8 +28,12 @@ const ExamSettings = mongoose.model('ExamSettings', {
     shuffleOptions : {
         type : Boolean,
         default :false
-    }
+    },
 
+    totalScore : {
+        type: Number,
+        default : 0
+    }
 })
 
 module.exports = ExamSettings;

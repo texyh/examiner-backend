@@ -5,9 +5,6 @@ const app = require("../server");
 const api = request(app);
 
 describe("Examiner Server", () => {
-
- 
-
   context('invalid routes', function () {
     it("should not return welcome message", (done) => {
       api.get("/someo/invalid/routes").expect(404).end((err, res) => {

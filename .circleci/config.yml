@@ -37,6 +37,8 @@ jobs:
       - run:
           name: Run Test
           command: npm test
+          environment:
+            MONGODB_URI_TEST: mongodb://localhost:27017/ExaminerTestDB
       # run tests
       - run:
           name: Get Code coverage

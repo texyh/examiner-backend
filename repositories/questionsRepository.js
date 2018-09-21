@@ -51,10 +51,21 @@ const deleteOne = (id) => {
         .catch(catchErr);
 }
 
-const findQuestionsInCourseIds = (courseIds) => {
-    return Question.find({examinerId : settings.examinerId})
+const findQuestionsInCourseIds = (courseIds, examinerId) => {
+
+    return Question.find({examinerId : examinerId})
             .where('courseId')
             .in(courseIds)
+            .then(questions => {
+               return Promise.resolve(questions);
+            }).catch(catchErr);
+}
+
+const findQuestionsinIds = (questionIds, courseId) => {
+
+    return Question.find({courseId : courseId})
+            .where('_id')
+            .in(questionIds)
             .then(questions => {
                return Promise.resolve(questions);
             }).catch(catchErr);
@@ -71,5 +82,6 @@ module.exports = {
     update,
     deleteOne,
     createMany,
-    findQuestionsInCourseIds
+    findQuestionsInCourseIds,
+    findQuestionsinIds
 }

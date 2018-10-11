@@ -1,8 +1,13 @@
 require('dotenv').config({ silent: true });
 require('./db/dbconnect');
 
+const {seedDataBase} = require('./seed/seed');
+seedDataBase();
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
+
 
 const routes = require('./routes');
 const app = express();
@@ -24,5 +29,6 @@ app.listen(PORT, (err) => {
   }
   console.log(`now listening on port ${PORT}`);
 });
+
 
 module.exports = app;

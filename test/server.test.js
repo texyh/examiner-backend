@@ -1,10 +1,15 @@
 const expect = require("expect");
 const request = require("supertest");
 const app = require("../server");
+const seedDataBase = require('../seed/seed');
 
 const api = request(app);
 
 describe("Examiner Server", () => {
+  before((done) => {
+    seedDataBase()
+    done();
+  })
   context('invalid routes', function () {
     it("should not return welcome message", (done) => {
       api.get("/someo/invalid/routes").expect(404).end((err, res) => {

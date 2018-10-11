@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {examiner, candidate} = require('../utils/constants')
+const {userTypes} = require('../utils/constants')
 
 const UserSchema = new mongoose.Schema({
     firstName : {
@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     },
     userType : {
         type: String,
-        enum : [candidate, examiner]
+        enum : [userTypes.candidate, userTypes.examiner]
     }
 })
 

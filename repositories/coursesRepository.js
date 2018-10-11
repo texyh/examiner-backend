@@ -37,7 +37,7 @@ const update = (question) => {
 }
 
 const deleteOne = (id) => {
-    Course.findByIdAndDelete(id)
+    return Course.findByIdAndDelete(id)
         .then(result => Promise.resolve())
         .catch(catchErr);
 }

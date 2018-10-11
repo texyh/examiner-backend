@@ -1,0 +1,2 @@
+add question type - multi choice, yes/no, freeform
+add mark for question

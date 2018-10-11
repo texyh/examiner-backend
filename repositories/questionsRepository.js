@@ -1,16 +1,16 @@
 const {Question} = require('../models');
 
 const findById = (id) => {
-    Question.findById(id).then(question => {
-        Promise.resolve(question);
+    return Question.findById(id).then(question => {
+        return Promise.resolve(question);
     }).catch(catchErr);
 }
 
 const findAll = (query = null) => {
     query = query == null ? {} : query;
 
-    Question.find(query).then(questions => {
-        Promise.resolve(questions);
+    return Question.find(query).then(questions => {
+        return Promise.resolve(questions);
     }).catch(catchErr);
 }
 
@@ -46,7 +46,7 @@ const update = (question) => {
 }
 
 const deleteOne = (id) => {
-    Question.findOneAndRemove(id)
+    return Question.findOneAndRemove(id)
         .then(result => Promise.resolve())
         .catch(catchErr);
 }
